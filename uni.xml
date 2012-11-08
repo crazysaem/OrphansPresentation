@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <employee dtype="Professor" id="2125" name="Sokrates" version="1"/>
+  <employee dtype="Professor" id="2126" name="Russel" version="1"/>
+  <employee dtype="Professor" id="2127" name="Kopernikus" version="1"/>
+  <employee dtype="Professor" id="2133" name="Popper" version="1"/>
+  <employee dtype="Professor" id="2134" name="Augustinus" version="1"/>
+  <employee dtype="Professor" id="2136" name="Curie" version="1"/>
+  <employee dtype="Professor" id="2137" name="Kant" version="1"/>
+  <employee dtype="Assistant" id="3002" name="Platon" version="1"/>
+  <employee dtype="Assistant" id="3003" name="Aristoteles" version="1"/>
+  <employee dtype="Assistant" id="3004" name="Wittgenstein" version="1"/>
+  <employee dtype="Assistant" id="3005" name="Rhetikus" version="1"/>
+  <employee dtype="Assistant" id="3006" name="Newton" version="1"/>
+  <employee dtype="Assistant" id="3007" name="Spinoza" version="1"/>
+  <professor id="2125" rank="C4"/>
+  <professor id="2126" rank="C4"/>
+  <professor id="2127" rank="C3"/>
+  <professor id="2133" rank="C3"/>
+  <professor id="2134" rank="C3"/>
+  <professor id="2136" rank="C4"/>
+  <professor id="2137" rank="C4"/>
+  <assistant id="3002" subject="Ideenlehre" professor_id="2125"/>
+  <assistant id="3003" subject="Syllogistik" professor_id="2125"/>
+  <assistant id="3004" subject="Sprachtheorie" professor_id="2126"/>
+  <assistant id="3005" subject="Planetenbewegung" professor_id="2127"/>
+  <assistant id="3006" subject="Keplersche Gesetze" professor_id="2127"/>
+  <assistant id="3007" subject="Gott und Natur" professor_id="2134"/>
+  <lecture id="4052" title="Logik" professor_id="2125" version="1"/>
+  <lecture id="4630" title="Die 3 Kritiken" professor_id="2137" version="1"/>
+  <lecture id="5001" title="Grundzuege" professor_id="2137" version="1"/>
+  <lecture id="5022" title="Glaube und Wissen" professor_id="2134" version="1"/>
+  <lecture id="5041" title="Ethik" professor_id="2125" version="1"/>
+  <lecture id="5043" title="Erkenntnistheorie" professor_id="2126" version="1"/>
+  <lecture id="5049" title="Maeeutik" professor_id="2125" version="1"/>
+  <lecture id="5052" title="Wissenschaftstheorie" professor_id="2126" version="1"/>
+  <lecture id="5216" title="Bioethik" professor_id="2126" version="1"/>
+  <lecture id="5259" title="Der Wiener Kreis" professor_id="2133" version="1"/>
+  <dependency predecessor_id="5001" successor_id="5041"/>
+  <dependency predecessor_id="5001" successor_id="5043"/>
+  <dependency predecessor_id="5001" successor_id="5049"/>
+  <dependency predecessor_id="5041" successor_id="5052"/>
+  <dependency predecessor_id="5041" successor_id="5216"/>
+  <dependency predecessor_id="5043" successor_id="5052"/>
+  <dependency predecessor_id="5052" successor_id="5259"/>
+  <student id="24002" name="Xenokrates" semester="1" version="1"/>
+  <student id="25403" name="Jonas" semester="12" version="1"/>
+  <student id="26120" name="Fichte" semester="10" version="1"/>
+  <student id="26830" name="Aristoxenos" semester="8" version="1"/>
+  <student id="27550" name="Schopenhauer" semester="6" version="1"/>
+  <student id="28106" name="Carnap" semester="3" version="1"/>
+  <student id="29120" name="Theophrastos" semester="2" version="1"/>
+  <student id="29555" name="Feuerbach" semester="2" version="1"/>
+  <participation student_id="25403" lecture_id="5022"/>
+  <participation student_id="26120" lecture_id="5001"/>
+  <participation student_id="27550" lecture_id="4052"/>
+  <participation student_id="27550" lecture_id="5001"/>
+  <participation student_id="28106" lecture_id="5041"/>
+  <participation student_id="28106" lecture_id="5052"/>
+  <participation student_id="28106" lecture_id="5216"/>
+  <participation student_id="28106" lecture_id="5259"/>
+  <participation student_id="29120" lecture_id="5001"/>
+  <participation student_id="29120" lecture_id="5041"/>
+  <participation student_id="29120" lecture_id="5049"/>
+  <participation student_id="29555" lecture_id="5001"/>
+  <participation student_id="29555" lecture_id="5022"/>
+  <exam lecture_Id="4630" student_Id="27550" grade="1.00" professor_id="2137"/>
+  <exam lecture_Id="5001" student_Id="28106" grade="2.10" professor_id="2126"/>
+  <exam lecture_Id="5041" student_Id="25403" grade="2.00" professor_id="2125"/>
+  <exam lecture_Id="5052" student_Id="28106" grade="3.00" professor_id="2126"/>
+</dataset>

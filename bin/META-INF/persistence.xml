@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+ 		<class>entity.Employee</class>
+   		<class>entity.Assistant</class>
+   		<class>entity.Professor</class>
+   		<class>entity.Lecture</class>
+   		<class>entity.Student</class>
+   		<class>entity.Exam</class>
+   		
+		<properties>
+			<shared-cache-mode>NONE</shared-cache-mode>
+	 		<property name="eclipselink.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+			<property name="eclipselink.jdbc.user" value="uni"/>
+			<property name="eclipselink.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="eclipselink.jdbc.password" value="uni"/>
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+			<property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="createUni.sql"/>
+			<property name="eclipselink.drop-ddl-jdbc-file-name" value="dropUni.sql"/>
+			<property name="eclipselink.application-location" value="."/>
+			<property name="eclipselink.logging.level" value="FINE"/>
+		</properties>
+		<!-- 	
+		<properties>
+	 		<property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost/uni"/>
+			<property name="eclipselink.jdbc.user" value="uni"/>
+			<property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="eclipselink.jdbc.password" value="uni"/>
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+			<property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="createUni.sql"/>
+			<property name="eclipselink.application-location" value="."/>
+			<property name="eclipselink.logging.level" value="FINE"/>
+			<property name="eclipselink.jdbc.native-sql" value="true"/>
+			<property name="eclipselink.target-database" value="MySQL"/>
+		</properties>
+		-->
+	</persistence-unit>
+</persistence>
