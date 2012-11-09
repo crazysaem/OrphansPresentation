@@ -28,7 +28,7 @@ public class Start
 	}
 	
 	public static void createBook()
-	{	    
+	{
 	    em.getTransaction().begin();	    
 	    
 	    Book book = new Book();

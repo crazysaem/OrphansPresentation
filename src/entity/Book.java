@@ -27,7 +27,7 @@ public class Book
 	//@OneToMany(mappedBy = "book", orphanRemoval=false, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     //private Collection<Page> pages;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL, /*orphanRemoval=true,*/ fetch = FetchType.EAGER)
 	private Author author;
 	
 	public Book()
