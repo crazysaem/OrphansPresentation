@@ -2,12 +2,8 @@
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
- 		<class>entity.Employee</class>
-   		<class>entity.Assistant</class>
-   		<class>entity.Professor</class>
-   		<class>entity.Lecture</class>
-   		<class>entity.Student</class>
-   		<class>entity.Exam</class>
+ 		<class>entity.Book</class>
+   		<class>entity.Page</class>
    		
 		<properties>
 			<shared-cache-mode>NONE</shared-cache-mode>
