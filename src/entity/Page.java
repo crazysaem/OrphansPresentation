@@ -1,23 +1,29 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="page")
+//@Entity
+//@Table(name="page")
 public class Page 
 {
+	/*
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	private int pageNumber;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="BOOK_ID")
     private Book book;
 	
 	public Page()
@@ -53,4 +59,5 @@ public class Page
 	public String toString() {
 		return "" + this.pageNumber;
 	}
+	*/
 }

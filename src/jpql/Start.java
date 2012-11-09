@@ -1,10 +1,11 @@
 package jpql;
 
+import entity.Author;
 import entity.Book;
 import entity.Page;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Vector;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,39 +16,53 @@ public class Start
 {
 	private static final String PERSISTENCE_UNIT_NAME = "jpa";
 	private static EntityManagerFactory factory;
+	private static EntityManager em;
 
 	public static void main(String[] args) 
 	{
 	    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-	    EntityManager em = factory.createEntityManager();
-	    // Read the existing entries and write to console
-	    Query q = em.createQuery("select b from Book b");
-	    List<Book> booklist = q.getResultList();
-	    for (Book todo : booklist)
-	    {
-	    	System.out.println(todo);
-	    }
-	    System.out.println("Size: " + booklist.size());
+	    em = factory.createEntityManager();
+	    
+	    createBook();
+	    //deleteBook(1450);
+	}
 	
-	    // Create new Book
-	    em.getTransaction().begin();
+	public static void createBook()
+	{	    
+	    em.getTransaction().begin();	    
 	    
 	    Book book = new Book();
-	    book.setName("The Help");
+	    book.setName("Wuuuuuusch!");
 	    
-	    ArrayList<Page> pages = new ArrayList<Page>();
+	    Author a = new Author();
+	    a.setName("Tufan");
 	    
-	    for(int i=0; i<150; i++)
-	    {
-	    	Page p = new Page();
-	    	p.setPageNumber(i);
-	    	p.setBook(book);
-	    	pages.add(p);
-	    }
-	    
-	    book.setPages(pages);
+	    book.setAuthor(a);
 	    
 	    em.persist(book);
+	    
+	    Author b = new Author();
+	    b.setName("Samuel");
+	    
+	    book.setAuthor(b);
+	    
+	    em.persist(book);
+	    
+	    em.getTransaction().commit();
+	
+	    em.close();
+	}
+	
+	public static void deleteBook(int id)
+	{
+		Query q = em.createQuery("select b from Book b where b.id = " + id);
+	    
+	    Book book = (Book) q.getSingleResult();
+	    
+	    em.getTransaction().begin();	    
+	    
+	    em.remove(book);
+	    
 	    em.getTransaction().commit();
 	
 	    em.close();

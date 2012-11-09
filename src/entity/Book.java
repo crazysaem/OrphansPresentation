@@ -4,12 +4,14 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,8 +24,11 @@ public class Book
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "book", cascade=CascadeType.ALL)
-    private Collection<Page> pages;
+	//@OneToMany(mappedBy = "book", orphanRemoval=false, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    //private Collection<Page> pages;
+	
+	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	private Author author;
 	
 	public Book()
 	{
@@ -45,17 +50,25 @@ public class Book
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	/*
 	public Collection<Page> getPages() {
 		return pages;
 	}
 
 	public void setPages(Collection<Page> pages) {
 		this.pages = pages;
-	}
+	}*/
 	
 	@Override
 	public String toString() {
 		return this.name;
+	}
+
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
 	}
 }
