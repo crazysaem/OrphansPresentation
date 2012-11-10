@@ -1,10 +1,8 @@
 package jpql;
 
-import entity.Author;
 import entity.Book;
 import entity.Page;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.persistence.EntityManager;
@@ -23,29 +21,20 @@ public class Start
 	    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	    em = factory.createEntityManager();
 	    
-	    //createBook();
-	    makeOrphin(1527);
-	    //deleteBook(1504);
+	    Long id = createBook();
+	    makeOrphin(id);
+	    
+	    em.close();
 	}
 	
-	public static void createBook()
+	public static long createBook()
 	{
 	    em.getTransaction().begin();	    
 	    
 	    Book book = new Book();
-	    book.setName("Wuuuuuusch!");
-	    
-	    Author a = new Author();
-	    a.setName("Tufan");
-	    
-	    book.setAuthor(a);
+	    book.setName("Harry Potter!");
 	    
 	    em.persist(book);
-	    
-	    Author b = new Author();
-	    b.setName("Samuel");
-	    
-	    book.setAuthor(b);
 	    
 	    em.persist(book);
 	    
@@ -65,11 +54,13 @@ public class Start
 	    em.persist(book);
 	    
 	    em.getTransaction().commit();
-	
-	    em.close();
+	    
+	    Long id = book.getId();	    
+	    
+	    return id;
 	}
 	
-	public static void makeOrphin(int id)
+	public static void makeOrphin(long id)
 	{
 		em.getTransaction().begin();
 		
@@ -86,22 +77,5 @@ public class Start
 	    em.persist(book);
 	    
 	    em.getTransaction().commit();
-	
-	    em.close();
-	}
-	
-	public static void deleteBook(int id)
-	{
-		Query q = em.createQuery("select b from Book b where b.id = " + id);
-	    
-	    Book book = (Book) q.getSingleResult();
-	    
-	    em.getTransaction().begin();	    
-	    
-	    em.remove(book);
-	    
-	    em.getTransaction().commit();
-	
-	    em.close();
 	}
 } 

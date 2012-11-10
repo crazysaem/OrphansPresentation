@@ -24,11 +24,8 @@ public class Book
 	
 	private String name;
 	
-	@OneToMany(orphanRemoval=false, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(/*orphanRemoval=true,*/ cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<Page> pages;
-	
-	@OneToOne(cascade=CascadeType.ALL, /*orphanRemoval=true,*/ fetch = FetchType.EAGER)
-	private Author author;
 	
 	public Book()
 	{
@@ -62,13 +59,5 @@ public class Book
 	@Override
 	public String toString() {
 		return this.name;
-	}
-
-	public Author getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(Author author) {
-		this.author = author;
 	}
 }
