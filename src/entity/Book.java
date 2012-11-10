@@ -24,8 +24,8 @@ public class Book
 	
 	private String name;
 	
-	//@OneToMany(mappedBy = "book", orphanRemoval=false, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    //private Collection<Page> pages;
+	@OneToMany(orphanRemoval=false, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    private Collection<Page> pages;
 	
 	@OneToOne(cascade=CascadeType.ALL, /*orphanRemoval=true,*/ fetch = FetchType.EAGER)
 	private Author author;
@@ -50,14 +50,14 @@ public class Book
 	public void setName(String name) {
 		this.name = name;
 	}
-	/*
+	
 	public Collection<Page> getPages() {
 		return pages;
 	}
 
 	public void setPages(Collection<Page> pages) {
 		this.pages = pages;
-	}*/
+	}
 	
 	@Override
 	public String toString() {

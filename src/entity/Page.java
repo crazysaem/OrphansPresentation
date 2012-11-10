@@ -11,20 +11,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name="page")
+@Entity
+@Table(name="page")
 public class Page 
 {
-	/*
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	private int pageNumber;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	/*@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="BOOK_ID")
-    private Book book;
+    private Book book;*/
 	
 	public Page()
 	{
@@ -46,18 +46,18 @@ public class Page
 	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
 	}
-
+	/*
 	public Book getBook() {
 		return book;
 	}
 
 	public void setBook(Book book) {
 		this.book = book;
-	}
+	}*/
 	
 	@Override
 	public String toString() {
 		return "" + this.pageNumber;
 	}
-	*/
+	
 }

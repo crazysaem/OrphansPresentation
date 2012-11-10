@@ -23,8 +23,9 @@ public class Start
 	    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	    em = factory.createEntityManager();
 	    
-	    createBook();
-	    //deleteBook(1450);
+	    //createBook();
+	    makeOrphin(1527);
+	    //deleteBook(1504);
 	}
 	
 	public static void createBook()
@@ -45,6 +46,42 @@ public class Start
 	    b.setName("Samuel");
 	    
 	    book.setAuthor(b);
+	    
+	    em.persist(book);
+	    
+	    Vector<Page> pages = new Vector<Page>();
+	    
+	    for(int i=0; i<=2; i++)
+	    {
+	    	Page page = new Page();
+	    	
+	    	page.setPageNumber(i);
+	    	
+	    	pages.add(page);	    	
+	    }
+	    
+	    book.setPages(pages);
+	    
+	    em.persist(book);
+	    
+	    em.getTransaction().commit();
+	
+	    em.close();
+	}
+	
+	public static void makeOrphin(int id)
+	{
+		em.getTransaction().begin();
+		
+		Query q = em.createQuery("select b from Book b where b.id = " + id);
+	    
+	    Book book = (Book) q.getSingleResult();
+	    
+	    Vector<Page> pages = (Vector<Page>) book.getPages();
+	    
+	    pages.remove(0);
+	    
+	    book.setPages(pages);
 	    
 	    em.persist(book);
 	    
