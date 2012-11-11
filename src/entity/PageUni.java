@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="page")
-public class Page 
+@Table(name="pageuni")
+public class PageUni 
 {
 	
 	@Id
@@ -22,11 +22,7 @@ public class Page
 	
 	private int pageNumber;
 	
-	/*@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name="BOOK_ID")
-    private Book book;*/
-	
-	public Page()
+	public PageUni()
 	{
 		
 	}
@@ -46,14 +42,6 @@ public class Page
 	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
 	}
-	/*
-	public Book getBook() {
-		return book;
-	}
-
-	public void setBook(Book book) {
-		this.book = book;
-	}*/
 	
 	@Override
 	public String toString() {

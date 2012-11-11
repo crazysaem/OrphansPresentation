@@ -1,12 +1,12 @@
 package dao;
 
-import entity.Page;
+import entity.PageUni;
 
-public class PageDaoImpl extends GenericDaoImpl<Page> implements PageDao {
+public class PageDaoImpl extends GenericDaoImpl<PageUni> implements PageDao {
 
 	@Override
-	protected Class<Page> getEntityClass() {
-		return Page.class;
+	protected Class<PageUni> getEntityClass() {
+		return PageUni.class;
 	}
 
 }

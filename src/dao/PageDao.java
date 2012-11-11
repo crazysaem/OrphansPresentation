@@ -1,7 +1,7 @@
 package dao;
 
-import entity.Page;
+import entity.PageUni;
 
-public interface PageDao extends GenericDao<Page> {
+public interface PageDao extends GenericDao<PageUni> {
 
 }

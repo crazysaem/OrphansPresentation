@@ -1,7 +1,7 @@
 package dao;
 
-import entity.Book;
+import entity.BookUni;
 
-public interface BookDao extends GenericDao<Book> {
+public interface BookDao extends GenericDao<BookUni> {
 
 }

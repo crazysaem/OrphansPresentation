@@ -1,12 +1,12 @@
 package dao;
 
-import entity.Book;
+import entity.BookUni;
 
-public class BookDaoImpl extends GenericDaoImpl<Book> implements BookDao {
+public class BookDaoImpl extends GenericDaoImpl<BookUni> implements BookDao {
 
 	@Override
-	protected Class<Book> getEntityClass() {
-		return Book.class;
+	protected Class<BookUni> getEntityClass() {
+		return BookUni.class;
 	}
 
 }

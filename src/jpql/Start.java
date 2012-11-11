@@ -1,7 +1,9 @@
 package jpql;
 
-import entity.Book;
-import entity.Page;
+import entity.BookBi;
+import entity.BookUni;
+import entity.PageBi;
+import entity.PageUni;
 
 import java.util.Vector;
 
@@ -21,29 +23,29 @@ public class Start
 	    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	    em = factory.createEntityManager();
 	    
-	    //Long id = createBook();
-	    //makeOrphin(1574);
+	    //createBookBi();
+	    //makeOrphinBi(1626);
+	    
+	    //createBookUni();
+	    //makeOrphinUni(1646);
+	    
 	    resetTables();
 	    
 	    em.close();
 	}
 	
-	public static long createBook()
+	public static long createBookUni()
 	{
 	    em.getTransaction().begin();	    
 	    
-	    Book book = new Book();
+	    BookUni book = new BookUni();
 	    book.setName("Harry Potter!");
 	    
-	    em.persist(book);
-	    
-	    em.persist(book);
-	    
-	    Vector<Page> pages = new Vector<Page>();
+	    Vector<PageUni> pages = new Vector<PageUni>();
 	    
 	    for(int i=0; i<=2; i++)
 	    {
-	    	Page page = new Page();
+	    	PageUni page = new PageUni();
 	    	
 	    	page.setPageNumber(i);
 	    	
@@ -61,15 +63,69 @@ public class Start
 	    return id;
 	}
 	
-	public static void makeOrphin(long id)
+	public static long createBookBi()
+	{
+	    em.getTransaction().begin();	    
+	    
+	    BookBi book = new BookBi();
+	    book.setName("Harry Potter!");
+	    
+	    Vector<PageBi> pages = new Vector<PageBi>();
+	    
+	    for(int i=0; i<=2; i++)
+	    {
+	    	PageBi page = new PageBi();
+	    	
+	    	page.setPageNumber(i);
+	    	
+	    	page.setBookbi(book);
+	    	
+	    	pages.add(page);	    	
+	    }
+	    
+	    book.setPages(pages);
+	    
+	    em.persist(book);
+	    
+	    em.getTransaction().commit();
+	    
+	    Long id = book.getId();	    
+	    
+	    return id;
+	}
+	
+	public static void makeOrphinUni(long id)
 	{
 		em.getTransaction().begin();
 		
-		Query q = em.createQuery("select b from Book b where b.id = " + id);
+		Query q = em.createQuery("select b from BookUni b where b.id = " + id);
 	    
-	    Book book = (Book) q.getSingleResult();
+	    BookUni book = (BookUni) q.getSingleResult();
 	    
-	    Vector<Page> pages = (Vector<Page>) book.getPages();
+	    Vector<PageUni> pages = (Vector<PageUni>) book.getPages();
+	    
+	    pages.remove(0);
+	    
+	    book.setPages(pages);
+	    
+	    em.persist(book);
+	    
+	    em.getTransaction().commit();
+	}
+	
+	public static void makeOrphinBi(long id)
+	{
+		em.getTransaction().begin();
+		
+		Query q = em.createQuery("select b from BookBi b where b.id = " + id);
+	    
+	    BookBi book = (BookBi) q.getSingleResult();
+	    
+	    Vector<PageBi> pages = (Vector<PageBi>) book.getPages();
+	    
+	    PageBi page = pages.get(0);
+	    
+	    page.setBookbi(null);
 	    
 	    pages.remove(0);
 	    
@@ -84,14 +140,22 @@ public class Start
 	{
 		em.getTransaction().begin();
 		
-		Query deleteBookPage = em.createNativeQuery("delete from Book_Page");
-		deleteBookPage.executeUpdate();
+		Query delete = null;
 		
-		Query deleteBook = em.createNativeQuery("delete from Book");
-		deleteBook.executeUpdate();
+		delete = em.createNativeQuery("delete from Bookuni_Pageuni");
+		delete.executeUpdate();
 		
-		Query deletePage = em.createNativeQuery("delete from Page");
-		deletePage.executeUpdate();
+		delete = em.createNativeQuery("delete from Bookuni");
+		delete.executeUpdate();
+		
+		delete = em.createNativeQuery("delete from Pageuni");
+		delete.executeUpdate();
+		
+		delete = em.createNativeQuery("delete from Pagebi");
+		delete.executeUpdate();
+		
+		delete = em.createNativeQuery("delete from Bookbi");
+		delete.executeUpdate();
 	    
 	    em.getTransaction().commit();
 	}

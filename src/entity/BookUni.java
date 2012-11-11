@@ -15,8 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="book")
-public class Book 
+@Table(name="bookuni")
+public class BookUni 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +25,9 @@ public class Book
 	private String name;
 	
 	@OneToMany(/*orphanRemoval=true,*/ cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    private Collection<Page> pages;
+    private Collection<PageUni> pages;
 	
-	public Book()
+	public BookUni()
 	{
 		
 	}
@@ -48,11 +48,11 @@ public class Book
 		this.name = name;
 	}
 	
-	public Collection<Page> getPages() {
+	public Collection<PageUni> getPages() {
 		return pages;
 	}
 
-	public void setPages(Collection<Page> pages) {
+	public void setPages(Collection<PageUni> pages) {
 		this.pages = pages;
 	}
 	
