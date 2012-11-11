@@ -21,8 +21,9 @@ public class Start
 	    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 	    em = factory.createEntityManager();
 	    
-	    Long id = createBook();
-	    makeOrphin(id);
+	    //Long id = createBook();
+	    //makeOrphin(1574);
+	    resetTables();
 	    
 	    em.close();
 	}
@@ -75,6 +76,22 @@ public class Start
 	    book.setPages(pages);
 	    
 	    em.persist(book);
+	    
+	    em.getTransaction().commit();
+	}
+	
+	public static void resetTables()
+	{
+		em.getTransaction().begin();
+		
+		Query deleteBookPage = em.createNativeQuery("delete from Book_Page");
+		deleteBookPage.executeUpdate();
+		
+		Query deleteBook = em.createNativeQuery("delete from Book");
+		deleteBook.executeUpdate();
+		
+		Query deletePage = em.createNativeQuery("delete from Page");
+		deletePage.executeUpdate();
 	    
 	    em.getTransaction().commit();
 	}
